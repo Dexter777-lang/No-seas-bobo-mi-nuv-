@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Caballero - Re:Zero Edition</title>
+    <style>
+        :root {
+            --color-principal: #4b0082; /* Púrpura real */
+            --color-secundario: #fdfdfd; /* Blanco nieve */
+            --color-acento: #00d2ff; /* Azul cielo mágico */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Contenedor de las cartas */
+        .card-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2d1a47 0%, #1a1a2e 100%);
+            border: 3px solid var(--color-principal);
+            border-radius: 20px;
+            padding: 40px;
+            display: none; /* Se ocultan por defecto */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(75, 0, 130, 0.5);
+            transition: all 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 { color: var(--color-acento); font-size: 2rem; margin-bottom: 20px; }
+        p { font-size: 1.2rem; line-height: 1.6; }
+
+        /* Botones */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background-color: var(--color-principal);
+            color: white;
+            border: 2px solid var(--color-acento);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--color-acento);
+            color: #1a1a2e;
+        }
+
+        /* Animación */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .heart { color: #ff4d6d; font-size: 2rem; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="slide active">
+            <h1>Empecemos desde Cero</h1>
+            <p>A veces el mundo parece difícil y te sientes como Subaru perdido en un lugar desconocido...</p>
+            <div class="heart">❄️</div>
+        </div>
+
+        <div class="slide">
+            <h1>No estás solo</h1>
+            <p>Incluso en mporales más oscuras, siempre estaré aquí para ser tu apoyolas líneas te, tal como Rem lo fue para su héroe.</p>
+            <div class="heart">💙</div>
+        </div>
+
+        <div class="slide">
+            <h1>Tu valor es infinito</h1>
+            <p>Tus inseguridades son solo sombras.</p>
+            <div class="heart">✨</div>
+        </div>
+
+        <div class="slide">
+            <h1>Mi Caballero Favorito</h1>
+            <p>No necesitas ser perfecto para ser mi persona favorita en este y en cualquier otro mundo.</p>
+            <div class="heart">❤️</div>
+        </div>
+
+        <div class="controls">
+            <button onclick="prevSlide()">Anterior</button>
+            <button onclick="nextSlide()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+    </script>
+</body>
+</html>
